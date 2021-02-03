@@ -1,0 +1,5 @@
+package com.comp313.knockknockapi.services;
+
+public class UserDetailsService {
+
+}

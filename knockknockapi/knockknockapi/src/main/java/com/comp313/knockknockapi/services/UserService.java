@@ -3,8 +3,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.comp313.knockknockapi.domain.TechDetails;
 import com.comp313.knockknockapi.domain.User;
+import com.comp313.knockknockapi.domain.UserDetails;
 import com.comp313.knockknockapi.exceptions.UsernameAlreadyExistsException;
+import com.comp313.knockknockapi.repositories.TechDetailsRepo;
+import com.comp313.knockknockapi.repositories.UserDetailsRepo;
 import com.comp313.knockknockapi.repositories.UserRepository;
 
 @Service
@@ -12,6 +16,12 @@ public class UserService {
 
 	 @Autowired
 	    private UserRepository userRepository;
+
+	 @Autowired
+	    private UserDetailsRepo userDetailsRepository;
+	 
+	 @Autowired
+	    private TechDetailsRepo techDetailsRepository;
 
 
 	    @Autowired
@@ -30,6 +40,34 @@ public class UserService {
 
 	        }catch (Exception e){
 	            throw new UsernameAlreadyExistsException("Username '"+newUser.getUsername()+"' already exists");
+	        }
+
+	    }
+	    public UserDetails saveUserDetails (UserDetails newUserDetails){
+
+	        try{
+	            //Username has to be unique (exception)
+	          //  newUserDetails.setUsername(newUserDetails.getUsername());
+	            // Make sure that password and confirmPassword match
+	            // We don't persist or show the confirmPassword
+	         //   newUserDetails.setConfirmPassword("");
+	           return userDetailsRepository.save(newUserDetails);
+	        	//return "";
+
+	        }catch (Exception e){
+	            throw new UsernameAlreadyExistsException("Username '"+newUserDetails.getUsername()+"' already exists");
+	        }
+
+	    }
+	    public TechDetails saveTechDetails (TechDetails newTechDetails){
+
+	        try{
+	          
+	           return techDetailsRepository.save(newTechDetails);
+	        	
+
+	        }catch (Exception e){
+	            throw new UsernameAlreadyExistsException("Username '"+newTechDetails.getUsername()+"' already exists");
 	        }
 
 	    }

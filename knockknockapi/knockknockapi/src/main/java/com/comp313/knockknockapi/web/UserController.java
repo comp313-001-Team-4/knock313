@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.comp313.knockknockapi.domain.TechDetails;
 import com.comp313.knockknockapi.domain.User;
+import com.comp313.knockknockapi.domain.UserDetails;
 import com.comp313.knockknockapi.payload.JWTLoginSucessReponse;
 import com.comp313.knockknockapi.payload.LoginRequest;
 import com.comp313.knockknockapi.security.JwtTokenProvider;
@@ -21,6 +23,8 @@ import com.comp313.knockknockapi.services.MapValidationErrorService;
 import com.comp313.knockknockapi.services.UserService;
 import com.comp313.knockknockapi.validator.UserValidator;
 import static com.comp313.knockknockapi.security.SecurityConstants.TOKEN_PREFIX;
+
+import java.security.Principal;
 
 import javax.validation.Valid;
 
@@ -77,4 +81,32 @@ public class UserController {
 
         return  new ResponseEntity<User>(newUser, HttpStatus.CREATED);
     }
+    
+    @PostMapping("/adduserdetails")
+    public ResponseEntity<?> addUserDetails(@Valid @RequestBody UserDetails userDetails, BindingResult result,Principal principal){
+        // Validate passwords match
+        //userValidator.validate(userDetails,result);
+        userDetails.setUsername(principal.getName());
+        ResponseEntity<?> errorMap = mapValidationErrorService.MapValidationService(result);
+        if(errorMap != null)return errorMap;
+
+       // User newUser = userService.saveUser(userDetails);
+        UserDetails newUserDetails =userService.saveUserDetails(userDetails);
+
+        return  new ResponseEntity<UserDetails>(newUserDetails, HttpStatus.CREATED);
+    }
+    @PostMapping("/addtechdetails")
+    public ResponseEntity<?> addTechDetails(@Valid @RequestBody TechDetails techDetails, BindingResult result,Principal principal){
+        // Validate passwords match
+        //userValidator.validate(userDetails,result);
+       techDetails.setUsername(principal.getName());
+        ResponseEntity<?> errorMap = mapValidationErrorService.MapValidationService(result);
+        if(errorMap != null)return errorMap;
+
+       // User newUser = userService.saveUser(userDetails);
+        TechDetails newTechDetails =userService.saveTechDetails(techDetails);
+
+        return  new ResponseEntity<TechDetails>(newTechDetails, HttpStatus.CREATED);
+    }
+    
 }

@@ -1,0 +1,5 @@
+package com.comp313.knockknockapi.repositories;
+
+public class TechDetailsRepo {
+
+}

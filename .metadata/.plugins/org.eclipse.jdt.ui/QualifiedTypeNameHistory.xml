@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="javax.validation.constraints.NotBlank"/>
+<fullyQualifiedTypeName name="javax.validation.constraints.Email"/>
+<fullyQualifiedTypeName name="javax.validation.constraints.Size"/>
+<fullyQualifiedTypeName name="com.comp313.knockknockapi.security.JwtTokenProvider"/>
+<fullyQualifiedTypeName name="com.comp313.knockknockapi.validator.UserValidator"/>
+<fullyQualifiedTypeName name="com.comp313.knockknockapi.services.UserService"/>
+<fullyQualifiedTypeName name="com.comp313.knockknockapi.services.CustomUserDetailsService"/>
+<fullyQualifiedTypeName name="com.comp313.knockknockapi.exceptions.UsernameAlreadyExistsException"/>
+<fullyQualifiedTypeName name="org.springframework.security.core.userdetails.UserDetailsService"/>
+<fullyQualifiedTypeName name="com.comp313.knockknockapi.repositories.UserRepository"/>
+<fullyQualifiedTypeName name="org.springframework.stereotype.Service"/>
+<fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
+<fullyQualifiedTypeName name="org.springframework.security.core.userdetails.UserDetails"/>
+<fullyQualifiedTypeName name="org.springframework.security.core.userdetails.UsernameNotFoundException"/>
+<fullyQualifiedTypeName name="javax.transaction.Transactional"/>
+<fullyQualifiedTypeName name="org.springframework.transaction.annotation.Transactional"/>
+<fullyQualifiedTypeName name="com.comp313.knockknockapi.services.MapValidationErrorService"/>
+<fullyQualifiedTypeName name="com.comp313.knockknockapi.payload.JWTLoginSucessReponse"/>
+<fullyQualifiedTypeName name="com.comp313.knockknockapi.domain.User"/>
+<fullyQualifiedTypeName name="com.comp313.knockknockapi.exceptions.InvalidLoginResponse"/>
+<fullyQualifiedTypeName name="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>
+<fullyQualifiedTypeName name="org.springframework.context.annotation.Bean"/>
+<fullyQualifiedTypeName name="com.comp313.knockknockapi.payload.LoginRequest"/>
+<fullyQualifiedTypeName name="org.springframework.web.bind.annotation.CrossOrigin"/>
+</qualifiedTypeNameHistroy>

@@ -1,0 +1,60 @@
+package com.comp313.knockknockapi.services;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Service;
+
+import com.comp313.knockknockapi.domain.User;
+import com.comp313.knockknockapi.domain.UserDetails;
+import com.comp313.knockknockapi.exceptions.UsernameAlreadyExistsException;
+import com.comp313.knockknockapi.repositories.UserDetailsRepo;
+import com.comp313.knockknockapi.repositories.UserRepository;
+
+@Service
+public class UserService {
+
+	 @Autowired
+	    private UserRepository userRepository;
+
+	 @Autowired
+	    private UserDetailsRepo userDetailsRepository;
+
+
+	    @Autowired
+	    private BCryptPasswordEncoder bCryptPasswordEncoder;
+
+	    public User saveUser (User newUser){
+
+	        try{
+	            newUser.setPassword(bCryptPasswordEncoder.encode(newUser.getPassword()));
+	            //Username has to be unique (exception)
+	            newUser.setUsername(newUser.getUsername());
+	            // Make sure that password and confirmPassword match
+	            // We don't persist or show the confirmPassword
+	            newUser.setConfirmPassword("");
+	            return userRepository.save(newUser);
+
+	        }catch (Exception e){
+	            throw new UsernameAlreadyExistsException("Username '"+newUser.getUsername()+"' already exists");
+	        }
+
+	    }
+	    public UserDetails saveUserDetails (UserDetails newUserDetails){
+
+	        try{
+	            //Username has to be unique (exception)
+	          //  newUserDetails.setUsername(newUserDetails.getUsername());
+	            // Make sure that password and confirmPassword match
+	            // We don't persist or show the confirmPassword
+	         //   newUserDetails.setConfirmPassword("");
+	           return userDetailsRepository.save(newUserDetails);
+	        	//return "";
+
+	        }catch (Exception e){
+	            throw new UsernameAlreadyExistsException("Username '"+newUserDetails.getUsername()+"' already exists");
+	        }
+
+	    }
+
+
+
+	}
