@@ -1,0 +1,30 @@
+package com.comp313.knockknockapi.payload;
+
+
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+
+public class LoginRequest {
+
+	 @Email(message = "It does not match email format")
+	 @NotBlank(message = "email is required")
+    private String email;
+    @NotBlank(message = "Password cannot be blank")
+    private String password;
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setUsername(String email) {
+        this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+}
