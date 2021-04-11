@@ -7,4 +7,6 @@ import com.comp313.knockknockapi.domain.UserDetails;
 
 public interface UserDetailsRepo extends CrudRepository<UserDetails, Long> {
 
+	UserDetails findByUsername(String name);
+
 }

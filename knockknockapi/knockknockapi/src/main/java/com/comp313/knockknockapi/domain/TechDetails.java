@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotBlank;
 
 @Entity
@@ -29,6 +30,19 @@ public class TechDetails {
 	    private float rating;
 	    private double lat;
 	    private double lon;
+	    
+	    @Transient
+	    private double distance;
+	    
+	    
+		public double getDistance() {
+			return distance;
+		}
+
+		public void setDistance(double distance) {
+			this.distance = distance;
+		}
+
 		public Long getId() {
 			return id;
 		}
